@@ -18,11 +18,11 @@ import java.util.Objects;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, NekosEnchantedBooks.MOD_ID, existingFileHelper);
+        super(generator.getPackOutput(), NekosEnchantedBooks.MOD_ID, existingFileHelper);
     }
 
     public ModelFile generateModel(String name) {
-        ResourceLocation location = modLoc("items/" + name);
+        ResourceLocation location = modLoc("item/" + name);
         if (!existingFileHelper.exists(location, PackType.CLIENT_RESOURCES, ".png", "textures")) {
             NekosEnchantedBooks.LOGGER.debug(name + " book texture not found, defaulting...");
             location = mcLoc("item/enchanted_book");
